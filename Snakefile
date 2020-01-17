@@ -30,13 +30,19 @@ rule bamtobed:
     shell:
         "bedtools bamtobed -i {input} > {output}"
 
-rule filter_dup:
-    input:
-        "mapped_bed/{name}.bed"
+# rule filter_dup:
+#     input:
+#         "mapped_bed/{name}.bed"
+#     output:
+#         "unique_bed/{name}.bed"
+#     shell:
+#         "macs2 filterdup -i {input} -o {output}"
+
+rule local_import:
     output:
         "unique_bed/{name}.bed"
     shell:
-        "macs2 filterdup -i {input} -o {output}"
+        "cp ../mouse_tf/results/{wildcards.name}_S*_R1_001.unique.bed {output}"
 
 rule callpeak:
     input:
