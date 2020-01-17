@@ -46,7 +46,7 @@ rule callpeak:
         temp("macs_output/{name}_control_lambda.bdg"),
 	"macs_output/{name}_peaks.narrowPeak"
     shell:
-        "macs2 callpeak -t {input} -g mm --bdg --outdir macs_output -n ${wildcards.name}"
+        "macs2 callpeak -t {input} -g mm --bdg --outdir macs_output -n {wildcards.name}"
 
 rule create_pileup_track:
     input:
