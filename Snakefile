@@ -3,7 +3,8 @@ track_hub = "../../var/www/html/trackhub_knut/mm10/"
 print(config)
 rule all:
     input:
-        expand(track_hub+"{name}_treat_pileup.bw", name=config["histonesamples"])
+        expand(track_hub+"{name}_treat_pileup.bw", name=config["histonesamples"]),
+        expand(track_hub+"{name}_treat_pileup.bw", name=config["smallsamples"])
 
 rule trim:
     input:
